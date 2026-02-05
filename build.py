@@ -4,8 +4,8 @@ Fetches market data for SoCal public companies,
 computes weekly rankings, and generates static HTML pages.
 
 Uses Yahoo Finance (via yfinance) — no API key required.
-Weekly change is calculated by comparing current prices to stored
-prices from the previous week's build.
+Weekly change is calculated directly from ~7 trading days of
+yfinance historical data (true week-over-week comparison).
 """
 
 import json
@@ -97,15 +97,16 @@ def fetch_quotes(tickers):
     """
     Fetch quotes for all tickers using yfinance.
     yfinance can fetch multiple tickers at once efficiently.
-    Returns list of quote dicts.
+    Returns list of quote dicts with both current and week-ago prices.
     """
     print(f"  Downloading data for {len(tickers)} tickers...")
 
     # yfinance can handle multiple tickers in one call
+    # Use 10 days to ensure we capture at least 7 trading days
     tickers_str = " ".join(tickers)
     data = yf.download(
         tickers_str,
-        period="5d",  # Get last 5 days
+        period="10d",  # Get ~10 days to ensure 7 trading days of history
         group_by="ticker",
         progress=False,
         threads=True,
@@ -120,21 +121,30 @@ def fetch_quotes(tickers):
             stock = yf.Ticker(ticker)
             info = stock.info
 
-            # Get current price from the download data
+            # Get current and week-ago prices from the download data
             if len(tickers) == 1:
                 # Single ticker: data is not nested
                 current_price = float(data["Close"].iloc[-1])
+                week_ago_price = float(data["Close"].iloc[0])
             else:
                 # Multiple tickers: data is nested by ticker
                 if ticker in data.columns.get_level_values(0):
-                    current_price = float(data[ticker]["Close"].iloc[-1])
+                    ticker_data = data[ticker]["Close"].dropna()
+                    if len(ticker_data) >= 2:
+                        current_price = float(ticker_data.iloc[-1])
+                        week_ago_price = float(ticker_data.iloc[0])
+                    else:
+                        current_price = info.get("currentPrice") or info.get("regularMarketPrice", 0)
+                        week_ago_price = None
                 else:
                     current_price = info.get("currentPrice") or info.get("regularMarketPrice", 0)
+                    week_ago_price = None
 
             if current_price and current_price > 0:
                 all_quotes.append({
                     "symbol": ticker,
                     "price": current_price,
+                    "week_ago_price": week_ago_price,
                     "yearHigh": info.get("fiftyTwoWeekHigh", 0),
                     "yearLow": info.get("fiftyTwoWeekLow", 0),
                     "marketCap": info.get("marketCap", 0),
@@ -200,17 +210,17 @@ def fetch_historical(ticker, days=7):
 # ---------------------------------------------------------------------------
 
 
-def build_rankings(companies, quotes, previous_prices):
+def build_rankings(companies, quotes):
     """
     Merge company info with quote data.
-    Calculate week-over-week change using previous_prices.
+    Calculate week-over-week change directly from yfinance historical data.
     Return sorted gainers (top 25), losers (bottom 25), and all enriched data.
     """
     # Build a lookup from ticker → company metadata
     company_map = {c["ticker"]: c for c in companies}
 
     enriched = []
-    current_prices = {}  # To save for next week
+    current_prices = {}  # To save for reference/debugging
 
     for q in quotes:
         ticker = q.get("symbol", "")
@@ -219,20 +229,15 @@ def build_rankings(companies, quotes, previous_prices):
 
         meta = company_map[ticker]
         current_price = q.get("price", 0) or 0
+        week_ago_price = q.get("week_ago_price")
         current_prices[ticker] = current_price
 
-        # Calculate week-over-week change
-        if ticker in previous_prices and previous_prices[ticker] > 0:
-            last_price = previous_prices[ticker]
-            week_change = ((current_price - last_price) / last_price) * 100
+        # Calculate week-over-week change directly from yfinance historical data
+        if week_ago_price and week_ago_price > 0:
+            week_change = ((current_price - week_ago_price) / week_ago_price) * 100
         else:
-            # No previous data — calculate from 52-week low as rough approximation
-            # (This only happens on first run)
-            year_low = q.get("yearLow", 0)
-            if year_low and year_low > 0:
-                week_change = ((current_price - year_low) / year_low) * 100 / 52  # Rough weekly avg
-            else:
-                week_change = 0
+            # Fallback: no historical data available
+            week_change = 0
 
         enriched.append(
             {
@@ -318,8 +323,7 @@ def compute_52_week_change(stock):
 
 
 def render_site(gainers, losers, pe_highest, pe_lowest, spotlight_gainer,
-                spotlight_loser, gainer_sparkline, loser_sparkline, build_date,
-                is_first_run=False):
+                spotlight_loser, gainer_sparkline, loser_sparkline, build_date):
     """Render Jinja2 templates to static HTML in docs/."""
 
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
@@ -330,7 +334,6 @@ def render_site(gainers, losers, pe_highest, pe_lowest, spotlight_gainer,
     common_context = {
         "build_date": build_date,
         "year": build_date.year,
-        "is_first_run": is_first_run,
     }
 
     # --- Homepage ---
@@ -381,16 +384,8 @@ def main():
     companies = load_companies()
     tickers = [c["ticker"] for c in companies]
 
-    # Load last week's prices for comparison
-    previous_prices = load_price_history()
-    is_first_run = len(previous_prices) == 0
-    if is_first_run:
-        print("  First run — no previous prices to compare")
-        print("  (Next week's build will show true week-over-week change)")
-    else:
-        print(f"  Loaded {len(previous_prices)} previous prices for comparison")
-
     print(f"\nFetching market data for {len(tickers)} companies...")
+    print("  (Weekly change calculated from ~7 trading days of yfinance data)")
     quotes = fetch_quotes(tickers)
     print(f"  Got quotes for {len(quotes)} companies")
 
@@ -401,9 +396,7 @@ def main():
         print("\n⚠ Too few quotes fetched. Check network connection.")
         return
 
-    gainers, losers, enriched, current_prices = build_rankings(
-        companies, quotes, previous_prices
-    )
+    gainers, losers, enriched, current_prices = build_rankings(companies, quotes)
     pe_highest, pe_lowest = compute_pe_extremes(enriched)
 
     # Add 52-week change to all stocks
@@ -439,7 +432,6 @@ def main():
         spotlight_gainer, spotlight_loser,
         gainer_sparkline, loser_sparkline,
         build_date,
-        is_first_run=is_first_run,
     )
 
 
