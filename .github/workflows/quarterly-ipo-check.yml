@@ -1,0 +1,71 @@
+name: Quarterly IPO Check Reminder
+
+on:
+  # Run on Jan 1, Apr 1, Jul 1, Oct 1 at 9:00 AM Pacific (16:00 UTC)
+  schedule:
+    - cron: '0 16 1 1,4,7,10 *'
+  # Allow manual trigger for testing
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  create-reminder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create IPO check reminder issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const today = new Date();
+            const quarter = Math.ceil((today.getMonth() + 1) / 3);
+            const year = today.getFullYear();
+
+            const issueTitle = `Q${quarter} ${year}: Check for new SoCal IPOs`;
+
+            const issueBody = `## Quarterly IPO Check
+
+            It's time to review whether any new Southern California companies have gone public!
+
+            ### Where to Check
+
+            - [ ] [LA Business Journal](https://labusinessjournal.com/) — Search for recent IPO coverage
+            - [ ] [San Diego Business Journal](https://www.sdbj.com/) — San Diego area companies
+            - [ ] [Orange County Business Journal](https://www.ocbj.com/) — Orange County companies
+            - [ ] [SEC EDGAR S-1 Filings](https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=S-1) — Search for CA addresses
+
+            ### What to Look For
+
+            - Companies headquartered in LA, Orange County, San Diego, Ventura, or Santa Barbara counties
+            - Recent IPOs (last 3 months)
+            - SPACs that completed mergers with SoCal companies
+
+            ### How to Add a Company
+
+            1. Find the ticker symbol (e.g., "XXXX")
+            2. Edit \`data/socal_companies.json\`:
+               \`\`\`json
+               {"ticker": "XXXX", "name": "Company Name", "city": "City Name"}
+               \`\`\`
+            3. Test locally: \`python build.py\`
+            4. Commit and push
+
+            ### Also Check
+
+            - [ ] Any anchor companies showing warnings in recent builds?
+            - [ ] Any companies that were acquired, delisted, or moved HQ?
+
+            ---
+            *This issue was automatically created. See MAINTENANCE.md for details.*`;
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: issueTitle,
+              body: issueBody,
+              labels: ['maintenance']
+            });
+
+            console.log(`Created issue: ${issueTitle}`);

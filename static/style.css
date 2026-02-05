@@ -1,0 +1,552 @@
+/* ==========================================================================
+   LA Stock Watch — Design System
+   A sophisticated, muted financial publication.
+   Mobile-first. One breakpoint at 640px.
+   ========================================================================== */
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #FAFAF7;
+  --text: #1A1A1A;
+  --text-muted: #6B6B6B;
+  --gain: #2D7A4F;
+  --gain-bg: #E8F5EE;
+  --loss: #C0392B;
+  --loss-bg: #FCEAE8;
+  --divider: #E8E6E1;
+  --card-bg: #FFFFFF;
+  --card-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --container: 960px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --radius: 8px;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background-color: var(--bg);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --- Layout --- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+main.container {
+  flex: 1;
+}
+
+/* --- Header --- */
+.site-header {
+  border-bottom: 1px solid var(--divider);
+  padding: var(--space-md) 0;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-logo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.site-nav {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.nav-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: var(--space-xs) 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text);
+  border-bottom-color: var(--text);
+}
+
+/* --- Hero --- */
+.hero,
+.rankings-hero {
+  text-align: center;
+  padding: var(--space-xl) 0 var(--space-lg);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-sm);
+}
+
+.hero-sub {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* --- Spotlight Cards --- */
+.spotlights {
+  display: grid;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.spotlight-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  padding: var(--space-lg);
+  border: 1px solid var(--divider);
+}
+
+.spotlight-label {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: var(--space-md);
+}
+
+.spotlight-gainer .spotlight-label {
+  background: var(--gain-bg);
+  color: var(--gain);
+}
+
+.spotlight-loser .spotlight-label {
+  background: var(--loss-bg);
+  color: var(--loss);
+}
+
+.spotlight-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.spotlight-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.gain-bg { background-color: var(--gain); }
+.loss-bg { background-color: var(--loss); }
+
+.spotlight-company {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.spotlight-ticker {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.spotlight-chart {
+  margin: var(--space-md) 0;
+  overflow: hidden;
+}
+
+.sparkline {
+  display: block;
+}
+
+.sparkline-gain { --sparkline-color: var(--gain); }
+.sparkline-loss { --sparkline-color: var(--loss); }
+
+.spotlight-stats {
+  display: flex;
+  gap: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--divider);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 1rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+/* --- Gain / Loss colors --- */
+.gain { color: var(--gain); }
+.loss { color: var(--loss); }
+
+/* --- P/E Section --- */
+.pe-section {
+  margin-bottom: var(--space-xl);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: var(--space-sm);
+}
+
+.title-accent {
+  font-size: 0.75rem;
+  vertical-align: middle;
+}
+
+.pe-explainer {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+  max-width: 600px;
+}
+
+.pe-grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.pe-column-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.pe-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.pe-card:last-child {
+  border-bottom: none;
+}
+
+.pe-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--divider);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.pe-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.pe-name {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pe-ticker {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.pe-value {
+  font-size: 1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+/* --- CTA Bar --- */
+.cta-bar {
+  text-align: center;
+  padding: var(--space-lg) 0 var(--space-xl);
+}
+
+.cta-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text);
+  border-bottom: 2px solid var(--text);
+  padding-bottom: 2px;
+  transition: opacity 0.15s;
+}
+
+.cta-link:hover {
+  opacity: 0.7;
+}
+
+/* --- Rankings Tables --- */
+.rankings-section {
+  margin-bottom: var(--space-xl);
+}
+
+.rankings-section .section-title {
+  margin-bottom: var(--space-md);
+}
+
+.table-wrap {
+  display: none;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.rankings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.rankings-table thead {
+  border-bottom: 2px solid var(--divider);
+}
+
+.rankings-table th {
+  text-align: left;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  padding: var(--space-sm) var(--space-sm);
+  white-space: nowrap;
+}
+
+.rankings-table td {
+  padding: var(--space-sm) var(--space-sm);
+  border-bottom: 1px solid var(--divider);
+  white-space: nowrap;
+}
+
+.rankings-table tbody tr:hover {
+  background: rgba(0,0,0,0.015);
+}
+
+.col-rank {
+  width: 36px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.col-price,
+.col-change,
+.col-year,
+.col-cap {
+  text-align: right;
+}
+
+.rankings-table th.col-price,
+.rankings-table th.col-change,
+.rankings-table th.col-year,
+.rankings-table th.col-cap {
+  text-align: right;
+}
+
+.tabnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Mobile Card List --- */
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.ranking-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  background: var(--card-bg);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+}
+
+.card-rank {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+
+.card-company {
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-change {
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.card-meta {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: 2px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.card-ticker {
+  font-weight: 600;
+}
+
+/* --- Footer --- */
+.site-footer {
+  border-top: 1px solid var(--divider);
+  padding: var(--space-xl) 0;
+  margin-top: var(--space-xl);
+  text-align: center;
+}
+
+.footer-tagline {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.footer-meta a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-copy {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Desktop breakpoint (640px+)
+   ========================================================================== */
+@media (min-width: 640px) {
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  /* Two-column spotlight cards */
+  .spotlights {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Two-column P/E grid */
+  .pe-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Show tables, hide cards */
+  .table-wrap {
+    display: block;
+  }
+
+  .card-list {
+    display: none;
+  }
+}

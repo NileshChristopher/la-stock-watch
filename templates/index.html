@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}LA Stock Watch — This Week's SoCal Movers{% endblock %}
+{% block nav_home %}active{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h1 class="hero-title">This Week in SoCal Stocks</h1>
+  <p class="hero-sub">The biggest movers among Southern California's publicly traded companies.</p>
+</section>
+
+<!-- Spotlight Cards -->
+<section class="spotlights">
+  {% if spotlight_gainer %}
+  <div class="spotlight-card spotlight-gainer">
+    <span class="spotlight-label">Top Gainer</span>
+    <div class="spotlight-header">
+      <div class="spotlight-avatar gain-bg">{{ spotlight_gainer.name | initials }}</div>
+      <div class="spotlight-info">
+        <h2 class="spotlight-company">{{ spotlight_gainer.name }}</h2>
+        <span class="spotlight-ticker">{{ spotlight_gainer.ticker }} &middot; {{ spotlight_gainer.city }}</span>
+      </div>
+    </div>
+    <div class="spotlight-chart">
+      <svg class="sparkline sparkline-gain" id="sparkline-gainer" width="100%" height="60"></svg>
+    </div>
+    <div class="spotlight-stats">
+      <div class="stat">
+        <span class="stat-value">{{ spotlight_gainer.price | price }}</span>
+        <span class="stat-label">Price</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value gain">&#9650; {{ spotlight_gainer.change_pct }}%</span>
+        <span class="stat-label">This Week</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">{{ spotlight_gainer.market_cap | market_cap }}</span>
+        <span class="stat-label">Market Cap</span>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if spotlight_loser %}
+  <div class="spotlight-card spotlight-loser">
+    <span class="spotlight-label">Top Loser</span>
+    <div class="spotlight-header">
+      <div class="spotlight-avatar loss-bg">{{ spotlight_loser.name | initials }}</div>
+      <div class="spotlight-info">
+        <h2 class="spotlight-company">{{ spotlight_loser.name }}</h2>
+        <span class="spotlight-ticker">{{ spotlight_loser.ticker }} &middot; {{ spotlight_loser.city }}</span>
+      </div>
+    </div>
+    <div class="spotlight-chart">
+      <svg class="sparkline sparkline-loss" id="sparkline-loser" width="100%" height="60"></svg>
+    </div>
+    <div class="spotlight-stats">
+      <div class="stat">
+        <span class="stat-value">{{ spotlight_loser.price | price }}</span>
+        <span class="stat-label">Price</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value loss">&#9660; {{ spotlight_loser.change_pct }}%</span>
+        <span class="stat-label">This Week</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">{{ spotlight_loser.market_cap | market_cap }}</span>
+        <span class="stat-label">Market Cap</span>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</section>
+
+<!-- P/E Ratio Extremes -->
+<section class="pe-section">
+  <h2 class="section-title">P/E Ratio Extremes</h2>
+  <p class="pe-explainer">
+    The Price-to-Earnings ratio shows how much investors pay for each dollar of profit.
+    A high P/E means investors expect big future growth. A low P/E could mean a bargain — or trouble ahead.
+  </p>
+
+  <div class="pe-grid">
+    <div class="pe-column">
+      <h3 class="pe-column-title">Highest P/E</h3>
+      {% for stock in pe_highest %}
+      <div class="pe-card">
+        <div class="pe-avatar">{{ stock.name | initials }}</div>
+        <div class="pe-info">
+          <span class="pe-name">{{ stock.name }}</span>
+          <span class="pe-ticker">{{ stock.ticker }}</span>
+        </div>
+        <span class="pe-value">{{ stock.pe }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="pe-column">
+      <h3 class="pe-column-title">Lowest P/E</h3>
+      {% for stock in pe_lowest %}
+      <div class="pe-card">
+        <div class="pe-avatar">{{ stock.name | initials }}</div>
+        <div class="pe-info">
+          <span class="pe-name">{{ stock.name }}</span>
+          <span class="pe-ticker">{{ stock.ticker }}</span>
+        </div>
+        <span class="pe-value">{{ stock.pe }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<div class="cta-bar">
+  <a href="rankings.html" class="cta-link">View Full Rankings &rarr;</a>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  var gainerData = {{ gainer_sparkline }};
+  var loserData = {{ loser_sparkline }};
+</script>
+<script src="static/sparkline-init.js"></script>
+{% endblock %}

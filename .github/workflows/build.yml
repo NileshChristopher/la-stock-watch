@@ -1,0 +1,38 @@
+name: Build LA Stock Watch
+
+on:
+  # Every Monday at 6:00 AM Pacific (13:00 UTC)
+  schedule:
+    - cron: '0 13 * * 1'
+  # Allow manual trigger from GitHub UI
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build site
+        run: python build.py
+
+      - name: Commit and push updated site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/ data/price_history.json
+          git diff --cached --quiet || git commit -m "Update site — $(date -u +'%B %d, %Y')"
+          git push

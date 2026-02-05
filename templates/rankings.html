@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}LA Stock Watch — Full Rankings{% endblock %}
+{% block nav_rankings %}active{% endblock %}
+
+{% block content %}
+<section class="rankings-hero">
+  <h1 class="hero-title">Full Rankings</h1>
+  <p class="hero-sub">Top 25 gainers and bottom 25 losers among SoCal public companies this week.</p>
+</section>
+
+<!-- Top 25 Gainers -->
+<section class="rankings-section">
+  <h2 class="section-title">Top 25 Gainers <span class="title-accent gain">&#9650;</span></h2>
+
+  <!-- Desktop table -->
+  <div class="table-wrap">
+    <table class="rankings-table">
+      <thead>
+        <tr>
+          <th class="col-rank">#</th>
+          <th class="col-company">Company</th>
+          <th class="col-ticker">Ticker</th>
+          <th class="col-price">Price</th>
+          <th class="col-change">1-Week</th>
+          <th class="col-year">52-Week</th>
+          <th class="col-cap">Market Cap</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for stock in gainers %}
+        <tr>
+          <td class="col-rank">{{ stock.rank }}</td>
+          <td class="col-company">{{ stock.name }}</td>
+          <td class="col-ticker">{{ stock.ticker }}</td>
+          <td class="col-price tabnum">{{ stock.price | price }}</td>
+          <td class="col-change tabnum gain">&#9650; {{ stock.change_pct }}%</td>
+          <td class="col-year tabnum">{{ stock.year_change }}%</td>
+          <td class="col-cap tabnum">{{ stock.market_cap | market_cap }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Mobile cards -->
+  <div class="card-list">
+    {% for stock in gainers %}
+    <div class="ranking-card">
+      <div class="card-rank">{{ stock.rank }}</div>
+      <div class="card-body">
+        <div class="card-header">
+          <span class="card-company">{{ stock.name }}</span>
+          <span class="card-change gain">&#9650; {{ stock.change_pct }}%</span>
+        </div>
+        <div class="card-meta">
+          <span class="card-ticker">{{ stock.ticker }}</span>
+          <span class="card-price">{{ stock.price | price }}</span>
+          <span class="card-year">52w: {{ stock.year_change }}%</span>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Bottom 25 Losers -->
+<section class="rankings-section">
+  <h2 class="section-title">Bottom 25 Losers <span class="title-accent loss">&#9660;</span></h2>
+
+  <!-- Desktop table -->
+  <div class="table-wrap">
+    <table class="rankings-table">
+      <thead>
+        <tr>
+          <th class="col-rank">#</th>
+          <th class="col-company">Company</th>
+          <th class="col-ticker">Ticker</th>
+          <th class="col-price">Price</th>
+          <th class="col-change">1-Week</th>
+          <th class="col-year">52-Week</th>
+          <th class="col-cap">Market Cap</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for stock in losers %}
+        <tr>
+          <td class="col-rank">{{ stock.rank }}</td>
+          <td class="col-company">{{ stock.name }}</td>
+          <td class="col-ticker">{{ stock.ticker }}</td>
+          <td class="col-price tabnum">{{ stock.price | price }}</td>
+          <td class="col-change tabnum loss">&#9660; {{ stock.change_pct }}%</td>
+          <td class="col-year tabnum">{{ stock.year_change }}%</td>
+          <td class="col-cap tabnum">{{ stock.market_cap | market_cap }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Mobile cards -->
+  <div class="card-list">
+    {% for stock in losers %}
+    <div class="ranking-card">
+      <div class="card-rank">{{ stock.rank }}</div>
+      <div class="card-body">
+        <div class="card-header">
+          <span class="card-company">{{ stock.name }}</span>
+          <span class="card-change loss">&#9660; {{ stock.change_pct }}%</span>
+        </div>
+        <div class="card-meta">
+          <span class="card-ticker">{{ stock.ticker }}</span>
+          <span class="card-price">{{ stock.price | price }}</span>
+          <span class="card-year">52w: {{ stock.year_change }}%</span>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

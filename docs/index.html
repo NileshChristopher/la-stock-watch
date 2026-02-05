@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LA Stock Watch — This Week's SoCal Movers</title>
+  <meta name="description" content="Weekly movers among Southern California's top publicly traded companies.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="LA Stock Watch">
+  <meta property="og:description" content="Weekly movers among Southern California's top publicly traded companies.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo">LA Stock Watch</a>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link active">This Week</a>
+        <a href="rankings.html" class="nav-link ">Full Rankings</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    
+<section class="hero">
+  <h1 class="hero-title">This Week in SoCal Stocks</h1>
+  <p class="hero-sub">The biggest movers among Southern California's publicly traded companies.</p>
+</section>
+
+<!-- Spotlight Cards -->
+<section class="spotlights">
+  
+  <div class="spotlight-card spotlight-gainer">
+    <span class="spotlight-label">Top Gainer</span>
+    <div class="spotlight-header">
+      <div class="spotlight-avatar gain-bg">AR</div>
+      <div class="spotlight-info">
+        <h2 class="spotlight-company">Alexandria Real Estate Equities</h2>
+        <span class="spotlight-ticker">ARE &middot; Pasadena</span>
+      </div>
+    </div>
+    <div class="spotlight-chart">
+      <svg class="sparkline sparkline-gain" id="sparkline-gainer" width="100%" height="60"></svg>
+    </div>
+    <div class="spotlight-stats">
+      <div class="stat">
+        <span class="stat-value">$55.61</span>
+        <span class="stat-label">Price</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value gain">&#9650; 0.62%</span>
+        <span class="stat-label">This Week</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">$9.6B</span>
+        <span class="stat-label">Market Cap</span>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <div class="spotlight-card spotlight-loser">
+    <span class="spotlight-label">Top Loser</span>
+    <div class="spotlight-header">
+      <div class="spotlight-avatar loss-bg">RL</div>
+      <div class="spotlight-info">
+        <h2 class="spotlight-company">Rocket Lab USA</h2>
+        <span class="spotlight-ticker">RKLB &middot; Long Beach</span>
+      </div>
+    </div>
+    <div class="spotlight-chart">
+      <svg class="sparkline sparkline-loss" id="sparkline-loser" width="100%" height="60"></svg>
+    </div>
+    <div class="spotlight-stats">
+      <div class="stat">
+        <span class="stat-value">$65.42</span>
+        <span class="stat-label">Price</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value loss">&#9660; -2.01%</span>
+        <span class="stat-label">This Week</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">$34.9B</span>
+        <span class="stat-label">Market Cap</span>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- P/E Ratio Extremes -->
+<section class="pe-section">
+  <h2 class="section-title">P/E Ratio Extremes</h2>
+  <p class="pe-explainer">
+    The Price-to-Earnings ratio shows how much investors pay for each dollar of profit.
+    A high P/E means investors expect big future growth. A low P/E could mean a bargain — or trouble ahead.
+  </p>
+
+  <div class="pe-grid">
+    <div class="pe-column">
+      <h3 class="pe-column-title">Highest P/E</h3>
+      
+      <div class="pe-card">
+        <div class="pe-avatar">KD</div>
+        <div class="pe-info">
+          <span class="pe-name">Kratos Defense & Security</span>
+          <span class="pe-ticker">KTOS</span>
+        </div>
+        <span class="pe-value">653.46155</span>
+      </div>
+      
+      <div class="pe-card">
+        <div class="pe-avatar">SH</div>
+        <div class="pe-info">
+          <span class="pe-name">Sunstone Hotel Investors</span>
+          <span class="pe-ticker">SHO</span>
+        </div>
+        <span class="pe-value">451.00003</span>
+      </div>
+      
+      <div class="pe-card">
+        <div class="pe-avatar">SC</div>
+        <div class="pe-info">
+          <span class="pe-name">Semtech Corp</span>
+          <span class="pe-ticker">SMTC</span>
+        </div>
+        <span class="pe-value">147.875</span>
+      </div>
+      
+    </div>
+    <div class="pe-column">
+      <h3 class="pe-column-title">Lowest P/E</h3>
+      
+      <div class="pe-card">
+        <div class="pe-avatar">PB</div>
+        <div class="pe-info">
+          <span class="pe-name">Preferred Bank</span>
+          <span class="pe-ticker">PFBC</span>
+        </div>
+        <span class="pe-value">9.156882</span>
+      </div>
+      
+      <div class="pe-card">
+        <div class="pe-avatar">EI</div>
+        <div class="pe-info">
+          <span class="pe-name">Edison International</span>
+          <span class="pe-ticker">EIX</span>
+        </div>
+        <span class="pe-value">8.347313</span>
+      </div>
+      
+      <div class="pe-card">
+        <div class="pe-avatar">HE</div>
+        <div class="pe-info">
+          <span class="pe-name">Herbalife</span>
+          <span class="pe-ticker">HLF</span>
+        </div>
+        <span class="pe-value">5.3194885</span>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<div class="cta-bar">
+  <a href="rankings.html" class="cta-link">View Full Rankings &rarr;</a>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-tagline">These companies employ your neighbors, supply your stores, and shape your city.</p>
+      <p class="footer-meta">
+        Data from <a href="https://financialmodelingprep.com" target="_blank" rel="noopener">Financial Modeling Prep</a>
+        &middot; Updated February 05, 2026
+      </p>
+      <p class="footer-copy">&copy; 2026 LA Stock Watch</p>
+    </div>
+  </footer>
+
+  
+<script>
+  var gainerData = [54.61, 54.05, 54.64, 54.15, 53.82, 55.31, 55.59];
+  var loserData = [88.57, 85.68, 80.07, 74.15, 81.27, 73.11, 65.41];
+</script>
+<script src="static/sparkline-init.js"></script>
+
+</body>
+</html>

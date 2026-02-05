@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}LA Stock Watch{% endblock %}</title>
+  <meta name="description" content="Weekly movers among Southern California's top publicly traded companies.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="LA Stock Watch">
+  <meta property="og:description" content="Weekly movers among Southern California's top publicly traded companies.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo">LA Stock Watch</a>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link {% block nav_home %}{% endblock %}">This Week</a>
+        <a href="rankings.html" class="nav-link {% block nav_rankings %}{% endblock %}">Full Rankings</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-tagline">These companies employ your neighbors, supply your stores, and shape your city.</p>
+      <p class="footer-meta">
+        Data from <a href="https://financialmodelingprep.com" target="_blank" rel="noopener">Financial Modeling Prep</a>
+        &middot; Updated {{ build_date.strftime('%B %d, %Y') }}
+      </p>
+      <p class="footer-copy">&copy; {{ year }} LA Stock Watch</p>
+    </div>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>
