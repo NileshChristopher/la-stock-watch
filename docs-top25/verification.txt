@@ -1,0 +1,6 @@
+Build: 2026-02-08 03:43 UTC
+----------------------------------------
+Tickers fetched: 25/25 OK
+Price range: $5.22 - $384.32 OK
+Market cap range: $4.2B - $207.1B OK
+No extreme movers (within +/-60%)

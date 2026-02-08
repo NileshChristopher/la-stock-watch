@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LA Stock Watch: Top 25 — SoCal's Largest Public Companies</title>
+  <meta name="description" content="The 25 largest publicly traded companies headquartered in Southern California, ranked by market capitalization.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="LA Stock Watch: Top 25">
+  <meta property="og:description" content="SoCal's 25 largest public companies by market cap">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="static/style.css">
+  <style>
+    /* Top 25 specific styles */
+    .top25-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+    .top25-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 400;
+    }
+    .top25-updated {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .top25-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    .top25-table thead {
+      border-bottom: 2px solid var(--divider);
+    }
+    .top25-table th {
+      text-align: left;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      padding: var(--space-sm);
+      white-space: nowrap;
+    }
+    .top25-table td {
+      padding: var(--space-sm);
+      border-bottom: 1px solid var(--divider);
+      white-space: nowrap;
+    }
+    .top25-table tbody tr:hover {
+      background: rgba(0,0,0,0.015);
+    }
+    .top25-table .col-rank {
+      width: 40px;
+      text-align: center;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .top25-table .col-company {
+      min-width: 180px;
+    }
+    .top25-table .col-ticker a {
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px dotted var(--text-muted);
+    }
+    .top25-table .col-ticker a:hover {
+      border-bottom-color: var(--text);
+    }
+    .top25-table .col-price,
+    .top25-table .col-change,
+    .top25-table .col-cap {
+      text-align: right;
+    }
+    .top25-table th.col-price,
+    .top25-table th.col-change,
+    .top25-table th.col-cap {
+      text-align: right;
+    }
+    .tabnum {
+      font-variant-numeric: tabular-nums;
+    }
+    .pe-spotlight-bar {
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: var(--radius);
+      padding: var(--space-md);
+      margin-top: var(--space-xl);
+      text-align: center;
+      font-size: 0.875rem;
+    }
+    .pe-spotlight-bar strong {
+      font-weight: 600;
+    }
+
+    /* Mobile cards */
+    .top25-cards {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .top25-card {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: var(--radius);
+      padding: var(--space-md);
+    }
+    .top25-card-rank {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      width: 24px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .top25-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .top25-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--space-sm);
+    }
+    .top25-card-company {
+      font-size: 0.875rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .top25-card-change {
+      font-size: 0.875rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      flex-shrink: 0;
+    }
+    .top25-card-meta {
+      display: flex;
+      gap: var(--space-md);
+      margin-top: 2px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .top25-card-ticker a {
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    .top25-table-wrap {
+      display: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    @media (min-width: 640px) {
+      .top25-table-wrap {
+        display: block;
+      }
+      .top25-cards {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo">LA Stock Watch: Top 25</a>
+      <span class="top25-updated">Updated {{ build_date.strftime('%B %d, %Y') }}</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1 class="hero-title">SoCal's Top 25</h1>
+      <p class="hero-sub">The largest publicly traded companies headquartered in Southern California, ranked by market cap.</p>
+    </section>
+
+    <!-- Spotlight Cards -->
+    <section class="spotlights">
+      {% if spotlight_gainer %}
+      <div class="spotlight-card spotlight-gainer">
+        <span class="spotlight-label">Top Gainer This Week</span>
+        <div class="spotlight-header">
+          <div class="spotlight-avatar gain-bg">{{ spotlight_gainer.name | initials }}</div>
+          <div class="spotlight-info">
+            <h2 class="spotlight-company">{{ spotlight_gainer.name }}</h2>
+            <span class="spotlight-ticker">
+              <a href="{{ spotlight_gainer.yahoo_url }}" target="_blank" rel="noopener">{{ spotlight_gainer.ticker }}</a>
+              &middot; {{ spotlight_gainer.city }}
+            </span>
+          </div>
+        </div>
+        <div class="spotlight-chart">
+          <svg class="sparkline sparkline-gain" id="sparkline-gainer" width="100%" height="60"></svg>
+        </div>
+        <div class="spotlight-stats">
+          <div class="stat">
+            <span class="stat-value">{{ spotlight_gainer.price | price }}</span>
+            <span class="stat-label">Price</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value gain">&#9650; {{ spotlight_gainer.change_pct }}%</span>
+            <span class="stat-label">Weekly</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">{{ spotlight_gainer.market_cap | market_cap }}</span>
+            <span class="stat-label">Market Cap</span>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if spotlight_loser %}
+      <div class="spotlight-card spotlight-loser">
+        <span class="spotlight-label">Top Loser This Week</span>
+        <div class="spotlight-header">
+          <div class="spotlight-avatar loss-bg">{{ spotlight_loser.name | initials }}</div>
+          <div class="spotlight-info">
+            <h2 class="spotlight-company">{{ spotlight_loser.name }}</h2>
+            <span class="spotlight-ticker">
+              <a href="{{ spotlight_loser.yahoo_url }}" target="_blank" rel="noopener">{{ spotlight_loser.ticker }}</a>
+              &middot; {{ spotlight_loser.city }}
+            </span>
+          </div>
+        </div>
+        <div class="spotlight-chart">
+          <svg class="sparkline sparkline-loss" id="sparkline-loser" width="100%" height="60"></svg>
+        </div>
+        <div class="spotlight-stats">
+          <div class="stat">
+            <span class="stat-value">{{ spotlight_loser.price | price }}</span>
+            <span class="stat-label">Price</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value loss">&#9660; {{ spotlight_loser.change_pct }}%</span>
+            <span class="stat-label">Weekly</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">{{ spotlight_loser.market_cap | market_cap }}</span>
+            <span class="stat-label">Market Cap</span>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </section>
+
+    <!-- All 25 Companies -->
+    <section class="rankings-section">
+      <div class="top25-header">
+        <h2>All 25 Companies</h2>
+        <span class="top25-updated">Sorted by market cap</span>
+      </div>
+
+      <!-- Desktop Table -->
+      <div class="top25-table-wrap">
+        <table class="top25-table">
+          <thead>
+            <tr>
+              <th class="col-rank">#</th>
+              <th class="col-company">Company</th>
+              <th class="col-ticker">Ticker</th>
+              <th class="col-price">Price</th>
+              <th class="col-change">Weekly</th>
+              <th class="col-cap">Mkt Cap</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for stock in companies %}
+            <tr>
+              <td class="col-rank">{{ stock.rank }}</td>
+              <td class="col-company">{{ stock.name }}</td>
+              <td class="col-ticker">
+                <a href="{{ stock.yahoo_url }}" target="_blank" rel="noopener">{{ stock.ticker }}</a>
+              </td>
+              <td class="col-price tabnum">{{ stock.price | price }}</td>
+              <td class="col-change tabnum {% if stock.change_pct >= 0 %}gain{% else %}loss{% endif %}">
+                {% if stock.change_pct >= 0 %}&#9650;{% else %}&#9660;{% endif %} {{ stock.change_pct }}%
+              </td>
+              <td class="col-cap tabnum">{{ stock.market_cap | market_cap }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile Cards -->
+      <div class="top25-cards">
+        {% for stock in companies %}
+        <div class="top25-card">
+          <span class="top25-card-rank">{{ stock.rank }}</span>
+          <div class="top25-card-body">
+            <div class="top25-card-header">
+              <span class="top25-card-company">{{ stock.name }}</span>
+              <span class="top25-card-change {% if stock.change_pct >= 0 %}gain{% else %}loss{% endif %}">
+                {% if stock.change_pct >= 0 %}&#9650;{% else %}&#9660;{% endif %} {{ stock.change_pct }}%
+              </span>
+            </div>
+            <div class="top25-card-meta">
+              <span class="top25-card-ticker">
+                <a href="{{ stock.yahoo_url }}" target="_blank" rel="noopener">{{ stock.ticker }}</a>
+              </span>
+              <span>{{ stock.price | price }}</span>
+              <span>{{ stock.market_cap | market_cap }}</span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- P/E Spotlight Bar -->
+    {% if pe_highest and pe_lowest %}
+    <div class="pe-spotlight-bar">
+      <strong>P/E Spotlight:</strong>
+      Highest: <strong>{{ pe_highest.ticker }}</strong> ({{ pe_highest.pe | pe }})
+      &nbsp;&bull;&nbsp;
+      Lowest: <strong>{{ pe_lowest.ticker }}</strong> ({{ pe_lowest.pe | pe }})
+    </div>
+    {% endif %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-tagline">These companies employ your neighbors, supply your stores, and shape your city.</p>
+      <p class="footer-meta">
+        Data from <a href="https://finance.yahoo.com" target="_blank" rel="noopener">Yahoo Finance</a>
+        &middot; Updated {{ build_date.strftime('%B %d, %Y') }}
+      </p>
+      <p class="footer-copy">&copy; {{ year }} LA Stock Watch</p>
+    </div>
+  </footer>
+
+  <script>
+    var gainerData = {{ gainer_sparkline }};
+    var loserData = {{ loser_sparkline }};
+  </script>
+  <script src="static/sparkline-init.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+# =============================================================================
+# LA Stock Watch: Top 25 — Daily Build
+# =============================================================================
+# This workflow runs automatically every weekday morning to update the site
+# with fresh stock data from Yahoo Finance.
+#
+# WHAT IT DOES:
+# 1. Wakes up at 1:30 PM Pacific (30 min after market close)
+# 2. Runs build_top25.py to fetch fresh prices
+# 3. Commits the updated files to the repository
+# 4. GitHub Pages automatically publishes the new site
+#
+# HOW TO USE:
+# - Automatic: Runs every weekday morning (no action needed)
+# - Manual: Click "Run workflow" button in GitHub Actions tab
+# =============================================================================
+
+name: Build Top 25 Site
+
+on:
+  # ┌───────────── minute (0-59)
+  # │  ┌────────── hour (0-23, UTC)
+  # │  │  ┌─────── day of month (1-31)
+  # │  │  │ ┌───── month (1-12)
+  # │  │  │ │ ┌─── day of week (0-6, Sun-Sat)
+  # │  │  │ │ │
+  # 30 21 * * 1-5  = 1:30 PM Pacific, Mon-Fri (after market close)
+  schedule:
+    - cron: '30 21 * * 1-5'
+
+  # Allow manual trigger from GitHub UI (useful for testing)
+  workflow_dispatch:
+
+# Give the workflow permission to commit changes
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Get the code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Step 3: Install required packages
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Step 4: Run the build script
+      - name: Build Top 25 site
+        run: python build_top25.py
+
+      # Step 5: Commit and push the updated files
+      - name: Commit and push updated site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs-top25/
+          git diff --cached --quiet || git commit -m "Update Top 25 — $(date -u +'%B %d, %Y')"
+          git push
