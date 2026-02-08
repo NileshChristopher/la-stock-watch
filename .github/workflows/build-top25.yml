@@ -63,6 +63,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs-top25/
+          git add docs/
           git diff --cached --quiet || git commit -m "Update Top 25 — $(date -u +'%B %d, %Y')"
           git push

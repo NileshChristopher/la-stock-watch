@@ -24,7 +24,7 @@ PROJECT_ROOT = Path(__file__).parent
 DATA_DIR = PROJECT_ROOT / "data"
 TEMPLATE_DIR = PROJECT_ROOT / "templates"
 STATIC_DIR = PROJECT_ROOT / "static"
-OUTPUT_DIR = PROJECT_ROOT / "docs-top25"
+OUTPUT_DIR = PROJECT_ROOT / "docs"
 
 # Validation thresholds
 MIN_MARKET_CAP = 1_000_000_000      # $1B
