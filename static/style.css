@@ -81,6 +81,19 @@ main.container {
   justify-content: space-between;
 }
 
+/* Elegant stacked header for Top 25 */
+.header-stack {
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.header-date {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
 .site-logo {
   font-family: var(--font-display);
   font-size: 1.25rem;
@@ -521,6 +534,95 @@ main.container {
 .footer-copy {
   font-size: 0.6875rem;
   color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Mobile compact layout (fit both spotlights + table peek on screen)
+   ========================================================================== */
+@media (max-width: 639px) {
+  /* Tighter hero */
+  .hero,
+  .rankings-hero {
+    padding: var(--space-md) 0 var(--space-sm);
+  }
+
+  .hero-title {
+    display: none;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  /* OPTION C: Side-by-side compact spotlights */
+  .spotlights {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .spotlight-card {
+    padding: var(--space-sm) var(--space-sm) var(--space-md);
+  }
+
+  .spotlight-label {
+    font-size: 0.5rem;
+    padding: 2px 6px;
+    margin-bottom: var(--space-xs);
+  }
+
+  .spotlight-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-xs);
+  }
+
+  .spotlight-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 0.625rem;
+  }
+
+  .spotlight-company {
+    font-size: 0.875rem;
+    line-height: 1.1;
+  }
+
+  .spotlight-ticker {
+    font-size: 0.6875rem;
+  }
+
+  /* Hide sparkline on mobile for Option C */
+  .spotlight-chart {
+    display: none;
+  }
+
+  /* Compact stats - stack vertically */
+  .spotlight-stats {
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-top: var(--space-sm);
+  }
+
+  .stat {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .stat-value {
+    font-size: 0.8125rem;
+    order: 2;
+  }
+
+  .stat-label {
+    font-size: 0.5625rem;
+    order: 1;
+    margin-top: 0;
+  }
 }
 
 /* ==========================================================================
