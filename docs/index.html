@@ -160,10 +160,19 @@
       font-size: 0.75rem;
       color: var(--text-muted);
     }
-    .top25-card-ticker a {
-      font-weight: 600;
-      color: var(--text-muted);
+    .top25-card-company {
       text-decoration: none;
+      color: var(--text);
+    }
+    .top25-card-company:hover {
+      text-decoration: underline;
+    }
+    .top25-table .col-company a {
+      text-decoration: none;
+      color: var(--text);
+    }
+    .top25-table .col-company a:hover {
+      text-decoration: underline;
     }
 
     /* Responsive */
@@ -269,7 +278,7 @@
     <section class="rankings-section">
       <div class="top25-header">
         <h2>All 25 Companies</h2>
-        <span class="top25-updated">Sorted by market cap</span>
+        <span class="top25-updated">Weekly performance</span>
       </div>
 
       <!-- Desktop Table -->
@@ -289,10 +298,10 @@
             
             <tr>
               <td class="col-rank">1</td>
-              <td class="col-company">Amgen</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/AMGN/" target="_blank" rel="noopener">AMGN</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/AMGN/" target="_blank" rel="noopener">Amgen</a>
               </td>
+              <td class="col-ticker">AMGN</td>
               <td class="col-price tabnum">$384.32</td>
               <td class="col-change tabnum gain">
                 &#9650; 12.07%
@@ -302,10 +311,10 @@
             
             <tr>
               <td class="col-rank">2</td>
-              <td class="col-company">Walt Disney Company</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/DIS/" target="_blank" rel="noopener">DIS</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/DIS/" target="_blank" rel="noopener">Walt Disney Company</a>
               </td>
+              <td class="col-ticker">DIS</td>
               <td class="col-price tabnum">$108.70</td>
               <td class="col-change tabnum loss">
                 &#9660; -2.58%
@@ -315,10 +324,10 @@
             
             <tr>
               <td class="col-rank">3</td>
-              <td class="col-company">Qualcomm</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/QCOM/" target="_blank" rel="noopener">QCOM</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/QCOM/" target="_blank" rel="noopener">Qualcomm</a>
               </td>
+              <td class="col-ticker">QCOM</td>
               <td class="col-price tabnum">$137.34</td>
               <td class="col-change tabnum loss">
                 &#9660; -9.78%
@@ -328,10 +337,10 @@
             
             <tr>
               <td class="col-rank">4</td>
-              <td class="col-company">Realty Income Corporation</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/O/" target="_blank" rel="noopener">O</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/O/" target="_blank" rel="noopener">Realty Income Corporation</a>
               </td>
+              <td class="col-ticker">O</td>
               <td class="col-price tabnum">$63.23</td>
               <td class="col-change tabnum gain">
                 &#9650; 4.5%
@@ -341,10 +350,10 @@
             
             <tr>
               <td class="col-rank">5</td>
-              <td class="col-company">Sempra</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/SRE/" target="_blank" rel="noopener">SRE</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/SRE/" target="_blank" rel="noopener">Sempra</a>
               </td>
+              <td class="col-ticker">SRE</td>
               <td class="col-price tabnum">$87.36</td>
               <td class="col-change tabnum gain">
                 &#9650; 0.3%
@@ -354,10 +363,10 @@
             
             <tr>
               <td class="col-rank">6</td>
-              <td class="col-company">Edwards Lifesciences</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/EW/" target="_blank" rel="noopener">EW</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/EW/" target="_blank" rel="noopener">Edwards Lifesciences</a>
               </td>
+              <td class="col-ticker">EW</td>
               <td class="col-price tabnum">$78.71</td>
               <td class="col-change tabnum loss">
                 &#9660; -3.41%
@@ -367,10 +376,10 @@
             
             <tr>
               <td class="col-rank">7</td>
-              <td class="col-company">Rocket Lab</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/RKLB/" target="_blank" rel="noopener">RKLB</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/RKLB/" target="_blank" rel="noopener">Rocket Lab</a>
               </td>
+              <td class="col-ticker">RKLB</td>
               <td class="col-price tabnum">$72.32</td>
               <td class="col-change tabnum loss">
                 &#9660; -15.59%
@@ -380,10 +389,10 @@
             
             <tr>
               <td class="col-rank">8</td>
-              <td class="col-company">Live Nation Entertainment</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/LYV/" target="_blank" rel="noopener">LYV</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/LYV/" target="_blank" rel="noopener">Live Nation Entertainment</a>
               </td>
+              <td class="col-ticker">LYV</td>
               <td class="col-price tabnum">$140.84</td>
               <td class="col-change tabnum loss">
                 &#9660; -4.7%
@@ -393,10 +402,10 @@
             
             <tr>
               <td class="col-rank">9</td>
-              <td class="col-company">Dexcom</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/DXCM/" target="_blank" rel="noopener">DXCM</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/DXCM/" target="_blank" rel="noopener">Dexcom</a>
               </td>
+              <td class="col-ticker">DXCM</td>
               <td class="col-price tabnum">$69.97</td>
               <td class="col-change tabnum loss">
                 &#9660; -5.45%
@@ -406,10 +415,10 @@
             
             <tr>
               <td class="col-rank">10</td>
-              <td class="col-company">Edison International</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/EIX/" target="_blank" rel="noopener">EIX</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/EIX/" target="_blank" rel="noopener">Edison International</a>
               </td>
+              <td class="col-ticker">EIX</td>
               <td class="col-price tabnum">$64.01</td>
               <td class="col-change tabnum gain">
                 &#9650; 2.96%
@@ -419,10 +428,10 @@
             
             <tr>
               <td class="col-rank">11</td>
-              <td class="col-company">Illumina</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/ILMN/" target="_blank" rel="noopener">ILMN</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/ILMN/" target="_blank" rel="noopener">Illumina</a>
               </td>
+              <td class="col-ticker">ILMN</td>
               <td class="col-price tabnum">$119.72</td>
               <td class="col-change tabnum loss">
                 &#9660; -20.02%
@@ -432,10 +441,10 @@
             
             <tr>
               <td class="col-rank">12</td>
-              <td class="col-company">Rivian Automotive</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/RIVN/" target="_blank" rel="noopener">RIVN</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/RIVN/" target="_blank" rel="noopener">Rivian Automotive</a>
               </td>
+              <td class="col-ticker">RIVN</td>
               <td class="col-price tabnum">$14.80</td>
               <td class="col-change tabnum loss">
                 &#9660; -2.44%
@@ -445,10 +454,10 @@
             
             <tr>
               <td class="col-rank">13</td>
-              <td class="col-company">Kratos Defense</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/KTOS/" target="_blank" rel="noopener">KTOS</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/KTOS/" target="_blank" rel="noopener">Kratos Defense</a>
               </td>
+              <td class="col-ticker">KTOS</td>
               <td class="col-price tabnum">$94.41</td>
               <td class="col-change tabnum loss">
                 &#9660; -12.71%
@@ -458,10 +467,10 @@
             
             <tr>
               <td class="col-rank">14</td>
-              <td class="col-company">Neurocrine Biosciences</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/NBIX/" target="_blank" rel="noopener">NBIX</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/NBIX/" target="_blank" rel="noopener">Neurocrine Biosciences</a>
               </td>
+              <td class="col-ticker">NBIX</td>
               <td class="col-price tabnum">$141.20</td>
               <td class="col-change tabnum gain">
                 &#9650; 2.35%
@@ -471,10 +480,10 @@
             
             <tr>
               <td class="col-rank">15</td>
-              <td class="col-company">The Trade Desk</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/TTD/" target="_blank" rel="noopener">TTD</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/TTD/" target="_blank" rel="noopener">The Trade Desk</a>
               </td>
+              <td class="col-ticker">TTD</td>
               <td class="col-price tabnum">$27.04</td>
               <td class="col-change tabnum loss">
                 &#9660; -13.47%
@@ -484,10 +493,10 @@
             
             <tr>
               <td class="col-rank">16</td>
-              <td class="col-company">Tetra Tech</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/TTEK/" target="_blank" rel="noopener">TTEK</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/TTEK/" target="_blank" rel="noopener">Tetra Tech</a>
               </td>
+              <td class="col-ticker">TTEK</td>
               <td class="col-price tabnum">$41.29</td>
               <td class="col-change tabnum gain">
                 &#9650; 8.03%
@@ -497,10 +506,10 @@
             
             <tr>
               <td class="col-rank">17</td>
-              <td class="col-company">Alexandria Real Estate</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/ARE/" target="_blank" rel="noopener">ARE</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/ARE/" target="_blank" rel="noopener">Alexandria Real Estate</a>
               </td>
+              <td class="col-ticker">ARE</td>
               <td class="col-price tabnum">$55.90</td>
               <td class="col-change tabnum gain">
                 &#9650; 3.42%
@@ -510,10 +519,10 @@
             
             <tr>
               <td class="col-rank">18</td>
-              <td class="col-company">Skyworks Solutions</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/SWKS/" target="_blank" rel="noopener">SWKS</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/SWKS/" target="_blank" rel="noopener">Skyworks Solutions</a>
               </td>
+              <td class="col-ticker">SWKS</td>
               <td class="col-price tabnum">$62.10</td>
               <td class="col-change tabnum gain">
                 &#9650; 11.31%
@@ -523,10 +532,10 @@
             
             <tr>
               <td class="col-rank">19</td>
-              <td class="col-company">Snap Inc</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/SNAP/" target="_blank" rel="noopener">SNAP</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/SNAP/" target="_blank" rel="noopener">Snap Inc</a>
               </td>
+              <td class="col-ticker">SNAP</td>
               <td class="col-price tabnum">$5.22</td>
               <td class="col-change tabnum loss">
                 &#9660; -27.9%
@@ -536,10 +545,10 @@
             
             <tr>
               <td class="col-rank">20</td>
-              <td class="col-company">Masimo</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/MASI/" target="_blank" rel="noopener">MASI</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/MASI/" target="_blank" rel="noopener">Masimo</a>
               </td>
+              <td class="col-ticker">MASI</td>
               <td class="col-price tabnum">$139.15</td>
               <td class="col-change tabnum gain">
                 &#9650; 2.13%
@@ -549,10 +558,10 @@
             
             <tr>
               <td class="col-rank">21</td>
-              <td class="col-company">Mattel</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/MAT/" target="_blank" rel="noopener">MAT</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/MAT/" target="_blank" rel="noopener">Mattel</a>
               </td>
+              <td class="col-ticker">MAT</td>
               <td class="col-price tabnum">$21.49</td>
               <td class="col-change tabnum gain">
                 &#9650; 3.47%
@@ -562,10 +571,10 @@
             
             <tr>
               <td class="col-rank">22</td>
-              <td class="col-company">First American Financial</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/FAF/" target="_blank" rel="noopener">FAF</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/FAF/" target="_blank" rel="noopener">First American Financial</a>
               </td>
+              <td class="col-ticker">FAF</td>
               <td class="col-price tabnum">$67.34</td>
               <td class="col-change tabnum gain">
                 &#9650; 5.12%
@@ -575,10 +584,10 @@
             
             <tr>
               <td class="col-rank">23</td>
-              <td class="col-company">Molina Healthcare</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/MOH/" target="_blank" rel="noopener">MOH</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/MOH/" target="_blank" rel="noopener">Molina Healthcare</a>
               </td>
+              <td class="col-ticker">MOH</td>
               <td class="col-price tabnum">$131.72</td>
               <td class="col-change tabnum loss">
                 &#9660; -28.77%
@@ -588,10 +597,10 @@
             
             <tr>
               <td class="col-rank">24</td>
-              <td class="col-company">Mercury General</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/MCY/" target="_blank" rel="noopener">MCY</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/MCY/" target="_blank" rel="noopener">Mercury General</a>
               </td>
+              <td class="col-ticker">MCY</td>
               <td class="col-price tabnum">$95.19</td>
               <td class="col-change tabnum gain">
                 &#9650; 9.21%
@@ -601,10 +610,10 @@
             
             <tr>
               <td class="col-rank">25</td>
-              <td class="col-company">Kilroy Realty</td>
-              <td class="col-ticker">
-                <a href="https://finance.yahoo.com/quote/KRC/" target="_blank" rel="noopener">KRC</a>
+              <td class="col-company">
+                <a href="https://finance.yahoo.com/quote/KRC/" target="_blank" rel="noopener">Kilroy Realty</a>
               </td>
+              <td class="col-ticker">KRC</td>
               <td class="col-price tabnum">$35.00</td>
               <td class="col-change tabnum gain">
                 &#9650; 1.51%
@@ -623,15 +632,13 @@
           <span class="top25-card-rank">1</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Amgen</span>
+              <a href="https://finance.yahoo.com/quote/AMGN/" target="_blank" rel="noopener" class="top25-card-company">Amgen</a>
               <span class="top25-card-change gain">
                 &#9650; 12.07%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/AMGN/" target="_blank" rel="noopener">AMGN</a>
-              </span>
+              <span class="top25-card-ticker">AMGN</span>
               <span>$384.32</span>
               <span>$207.1B</span>
             </div>
@@ -642,15 +649,13 @@
           <span class="top25-card-rank">2</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Walt Disney Company</span>
+              <a href="https://finance.yahoo.com/quote/DIS/" target="_blank" rel="noopener" class="top25-card-company">Walt Disney Company</a>
               <span class="top25-card-change loss">
                 &#9660; -2.58%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/DIS/" target="_blank" rel="noopener">DIS</a>
-              </span>
+              <span class="top25-card-ticker">DIS</span>
               <span>$108.70</span>
               <span>$192.8B</span>
             </div>
@@ -661,15 +666,13 @@
           <span class="top25-card-rank">3</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Qualcomm</span>
+              <a href="https://finance.yahoo.com/quote/QCOM/" target="_blank" rel="noopener" class="top25-card-company">Qualcomm</a>
               <span class="top25-card-change loss">
                 &#9660; -9.78%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/QCOM/" target="_blank" rel="noopener">QCOM</a>
-              </span>
+              <span class="top25-card-ticker">QCOM</span>
               <span>$137.34</span>
               <span>$146.7B</span>
             </div>
@@ -680,15 +683,13 @@
           <span class="top25-card-rank">4</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Realty Income Corporation</span>
+              <a href="https://finance.yahoo.com/quote/O/" target="_blank" rel="noopener" class="top25-card-company">Realty Income Corporation</a>
               <span class="top25-card-change gain">
                 &#9650; 4.5%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/O/" target="_blank" rel="noopener">O</a>
-              </span>
+              <span class="top25-card-ticker">O</span>
               <span>$63.23</span>
               <span>$58.1B</span>
             </div>
@@ -699,15 +700,13 @@
           <span class="top25-card-rank">5</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Sempra</span>
+              <a href="https://finance.yahoo.com/quote/SRE/" target="_blank" rel="noopener" class="top25-card-company">Sempra</a>
               <span class="top25-card-change gain">
                 &#9650; 0.3%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/SRE/" target="_blank" rel="noopener">SRE</a>
-              </span>
+              <span class="top25-card-ticker">SRE</span>
               <span>$87.36</span>
               <span>$57.0B</span>
             </div>
@@ -718,15 +717,13 @@
           <span class="top25-card-rank">6</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Edwards Lifesciences</span>
+              <a href="https://finance.yahoo.com/quote/EW/" target="_blank" rel="noopener" class="top25-card-company">Edwards Lifesciences</a>
               <span class="top25-card-change loss">
                 &#9660; -3.41%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/EW/" target="_blank" rel="noopener">EW</a>
-              </span>
+              <span class="top25-card-ticker">EW</span>
               <span>$78.71</span>
               <span>$46.2B</span>
             </div>
@@ -737,15 +734,13 @@
           <span class="top25-card-rank">7</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Rocket Lab</span>
+              <a href="https://finance.yahoo.com/quote/RKLB/" target="_blank" rel="noopener" class="top25-card-company">Rocket Lab</a>
               <span class="top25-card-change loss">
                 &#9660; -15.59%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/RKLB/" target="_blank" rel="noopener">RKLB</a>
-              </span>
+              <span class="top25-card-ticker">RKLB</span>
               <span>$72.32</span>
               <span>$38.6B</span>
             </div>
@@ -756,15 +751,13 @@
           <span class="top25-card-rank">8</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Live Nation Entertainment</span>
+              <a href="https://finance.yahoo.com/quote/LYV/" target="_blank" rel="noopener" class="top25-card-company">Live Nation Entertainment</a>
               <span class="top25-card-change loss">
                 &#9660; -4.7%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/LYV/" target="_blank" rel="noopener">LYV</a>
-              </span>
+              <span class="top25-card-ticker">LYV</span>
               <span>$140.84</span>
               <span>$32.7B</span>
             </div>
@@ -775,15 +768,13 @@
           <span class="top25-card-rank">9</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Dexcom</span>
+              <a href="https://finance.yahoo.com/quote/DXCM/" target="_blank" rel="noopener" class="top25-card-company">Dexcom</a>
               <span class="top25-card-change loss">
                 &#9660; -5.45%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/DXCM/" target="_blank" rel="noopener">DXCM</a>
-              </span>
+              <span class="top25-card-ticker">DXCM</span>
               <span>$69.97</span>
               <span>$27.4B</span>
             </div>
@@ -794,15 +785,13 @@
           <span class="top25-card-rank">10</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Edison International</span>
+              <a href="https://finance.yahoo.com/quote/EIX/" target="_blank" rel="noopener" class="top25-card-company">Edison International</a>
               <span class="top25-card-change gain">
                 &#9650; 2.96%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/EIX/" target="_blank" rel="noopener">EIX</a>
-              </span>
+              <span class="top25-card-ticker">EIX</span>
               <span>$64.01</span>
               <span>$24.6B</span>
             </div>
@@ -813,15 +802,13 @@
           <span class="top25-card-rank">11</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Illumina</span>
+              <a href="https://finance.yahoo.com/quote/ILMN/" target="_blank" rel="noopener" class="top25-card-company">Illumina</a>
               <span class="top25-card-change loss">
                 &#9660; -20.02%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/ILMN/" target="_blank" rel="noopener">ILMN</a>
-              </span>
+              <span class="top25-card-ticker">ILMN</span>
               <span>$119.72</span>
               <span>$18.4B</span>
             </div>
@@ -832,15 +819,13 @@
           <span class="top25-card-rank">12</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Rivian Automotive</span>
+              <a href="https://finance.yahoo.com/quote/RIVN/" target="_blank" rel="noopener" class="top25-card-company">Rivian Automotive</a>
               <span class="top25-card-change loss">
                 &#9660; -2.44%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/RIVN/" target="_blank" rel="noopener">RIVN</a>
-              </span>
+              <span class="top25-card-ticker">RIVN</span>
               <span>$14.80</span>
               <span>$18.1B</span>
             </div>
@@ -851,15 +836,13 @@
           <span class="top25-card-rank">13</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Kratos Defense</span>
+              <a href="https://finance.yahoo.com/quote/KTOS/" target="_blank" rel="noopener" class="top25-card-company">Kratos Defense</a>
               <span class="top25-card-change loss">
                 &#9660; -12.71%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/KTOS/" target="_blank" rel="noopener">KTOS</a>
-              </span>
+              <span class="top25-card-ticker">KTOS</span>
               <span>$94.41</span>
               <span>$15.9B</span>
             </div>
@@ -870,15 +853,13 @@
           <span class="top25-card-rank">14</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Neurocrine Biosciences</span>
+              <a href="https://finance.yahoo.com/quote/NBIX/" target="_blank" rel="noopener" class="top25-card-company">Neurocrine Biosciences</a>
               <span class="top25-card-change gain">
                 &#9650; 2.35%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/NBIX/" target="_blank" rel="noopener">NBIX</a>
-              </span>
+              <span class="top25-card-ticker">NBIX</span>
               <span>$141.20</span>
               <span>$14.1B</span>
             </div>
@@ -889,15 +870,13 @@
           <span class="top25-card-rank">15</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">The Trade Desk</span>
+              <a href="https://finance.yahoo.com/quote/TTD/" target="_blank" rel="noopener" class="top25-card-company">The Trade Desk</a>
               <span class="top25-card-change loss">
                 &#9660; -13.47%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/TTD/" target="_blank" rel="noopener">TTD</a>
-              </span>
+              <span class="top25-card-ticker">TTD</span>
               <span>$27.04</span>
               <span>$13.2B</span>
             </div>
@@ -908,15 +887,13 @@
           <span class="top25-card-rank">16</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Tetra Tech</span>
+              <a href="https://finance.yahoo.com/quote/TTEK/" target="_blank" rel="noopener" class="top25-card-company">Tetra Tech</a>
               <span class="top25-card-change gain">
                 &#9650; 8.03%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/TTEK/" target="_blank" rel="noopener">TTEK</a>
-              </span>
+              <span class="top25-card-ticker">TTEK</span>
               <span>$41.29</span>
               <span>$10.8B</span>
             </div>
@@ -927,15 +904,13 @@
           <span class="top25-card-rank">17</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Alexandria Real Estate</span>
+              <a href="https://finance.yahoo.com/quote/ARE/" target="_blank" rel="noopener" class="top25-card-company">Alexandria Real Estate</a>
               <span class="top25-card-change gain">
                 &#9650; 3.42%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/ARE/" target="_blank" rel="noopener">ARE</a>
-              </span>
+              <span class="top25-card-ticker">ARE</span>
               <span>$55.90</span>
               <span>$9.7B</span>
             </div>
@@ -946,15 +921,13 @@
           <span class="top25-card-rank">18</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Skyworks Solutions</span>
+              <a href="https://finance.yahoo.com/quote/SWKS/" target="_blank" rel="noopener" class="top25-card-company">Skyworks Solutions</a>
               <span class="top25-card-change gain">
                 &#9650; 11.31%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/SWKS/" target="_blank" rel="noopener">SWKS</a>
-              </span>
+              <span class="top25-card-ticker">SWKS</span>
               <span>$62.10</span>
               <span>$9.3B</span>
             </div>
@@ -965,15 +938,13 @@
           <span class="top25-card-rank">19</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Snap Inc</span>
+              <a href="https://finance.yahoo.com/quote/SNAP/" target="_blank" rel="noopener" class="top25-card-company">Snap Inc</a>
               <span class="top25-card-change loss">
                 &#9660; -27.9%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/SNAP/" target="_blank" rel="noopener">SNAP</a>
-              </span>
+              <span class="top25-card-ticker">SNAP</span>
               <span>$5.22</span>
               <span>$8.8B</span>
             </div>
@@ -984,15 +955,13 @@
           <span class="top25-card-rank">20</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Masimo</span>
+              <a href="https://finance.yahoo.com/quote/MASI/" target="_blank" rel="noopener" class="top25-card-company">Masimo</a>
               <span class="top25-card-change gain">
                 &#9650; 2.13%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/MASI/" target="_blank" rel="noopener">MASI</a>
-              </span>
+              <span class="top25-card-ticker">MASI</span>
               <span>$139.15</span>
               <span>$7.5B</span>
             </div>
@@ -1003,15 +972,13 @@
           <span class="top25-card-rank">21</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Mattel</span>
+              <a href="https://finance.yahoo.com/quote/MAT/" target="_blank" rel="noopener" class="top25-card-company">Mattel</a>
               <span class="top25-card-change gain">
                 &#9650; 3.47%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/MAT/" target="_blank" rel="noopener">MAT</a>
-              </span>
+              <span class="top25-card-ticker">MAT</span>
               <span>$21.49</span>
               <span>$6.9B</span>
             </div>
@@ -1022,15 +989,13 @@
           <span class="top25-card-rank">22</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">First American Financial</span>
+              <a href="https://finance.yahoo.com/quote/FAF/" target="_blank" rel="noopener" class="top25-card-company">First American Financial</a>
               <span class="top25-card-change gain">
                 &#9650; 5.12%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/FAF/" target="_blank" rel="noopener">FAF</a>
-              </span>
+              <span class="top25-card-ticker">FAF</span>
               <span>$67.34</span>
               <span>$6.9B</span>
             </div>
@@ -1041,15 +1006,13 @@
           <span class="top25-card-rank">23</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Molina Healthcare</span>
+              <a href="https://finance.yahoo.com/quote/MOH/" target="_blank" rel="noopener" class="top25-card-company">Molina Healthcare</a>
               <span class="top25-card-change loss">
                 &#9660; -28.77%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/MOH/" target="_blank" rel="noopener">MOH</a>
-              </span>
+              <span class="top25-card-ticker">MOH</span>
               <span>$131.72</span>
               <span>$6.8B</span>
             </div>
@@ -1060,15 +1023,13 @@
           <span class="top25-card-rank">24</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Mercury General</span>
+              <a href="https://finance.yahoo.com/quote/MCY/" target="_blank" rel="noopener" class="top25-card-company">Mercury General</a>
               <span class="top25-card-change gain">
                 &#9650; 9.21%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/MCY/" target="_blank" rel="noopener">MCY</a>
-              </span>
+              <span class="top25-card-ticker">MCY</span>
               <span>$95.19</span>
               <span>$5.3B</span>
             </div>
@@ -1079,15 +1040,13 @@
           <span class="top25-card-rank">25</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">Kilroy Realty</span>
+              <a href="https://finance.yahoo.com/quote/KRC/" target="_blank" rel="noopener" class="top25-card-company">Kilroy Realty</a>
               <span class="top25-card-change gain">
                 &#9650; 1.51%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="https://finance.yahoo.com/quote/KRC/" target="_blank" rel="noopener">KRC</a>
-              </span>
+              <span class="top25-card-ticker">KRC</span>
               <span>$35.00</span>
               <span>$4.2B</span>
             </div>

@@ -160,10 +160,19 @@
       font-size: 0.75rem;
       color: var(--text-muted);
     }
-    .top25-card-ticker a {
-      font-weight: 600;
-      color: var(--text-muted);
+    .top25-card-company {
       text-decoration: none;
+      color: var(--text);
+    }
+    .top25-card-company:hover {
+      text-decoration: underline;
+    }
+    .top25-table .col-company a {
+      text-decoration: none;
+      color: var(--text);
+    }
+    .top25-table .col-company a:hover {
+      text-decoration: underline;
     }
 
     /* Responsive */
@@ -269,7 +278,7 @@
     <section class="rankings-section">
       <div class="top25-header">
         <h2>All 25 Companies</h2>
-        <span class="top25-updated">Sorted by market cap</span>
+        <span class="top25-updated">Weekly performance</span>
       </div>
 
       <!-- Desktop Table -->
@@ -289,10 +298,10 @@
             {% for stock in companies %}
             <tr>
               <td class="col-rank">{{ stock.rank }}</td>
-              <td class="col-company">{{ stock.name }}</td>
-              <td class="col-ticker">
-                <a href="{{ stock.yahoo_url }}" target="_blank" rel="noopener">{{ stock.ticker }}</a>
+              <td class="col-company">
+                <a href="{{ stock.yahoo_url }}" target="_blank" rel="noopener">{{ stock.name }}</a>
               </td>
+              <td class="col-ticker">{{ stock.ticker }}</td>
               <td class="col-price tabnum">{{ stock.price | price }}</td>
               <td class="col-change tabnum {% if stock.change_pct >= 0 %}gain{% else %}loss{% endif %}">
                 {% if stock.change_pct >= 0 %}&#9650;{% else %}&#9660;{% endif %} {{ stock.change_pct }}%
@@ -311,15 +320,13 @@
           <span class="top25-card-rank">{{ stock.rank }}</span>
           <div class="top25-card-body">
             <div class="top25-card-header">
-              <span class="top25-card-company">{{ stock.name }}</span>
+              <a href="{{ stock.yahoo_url }}" target="_blank" rel="noopener" class="top25-card-company">{{ stock.name }}</a>
               <span class="top25-card-change {% if stock.change_pct >= 0 %}gain{% else %}loss{% endif %}">
                 {% if stock.change_pct >= 0 %}&#9650;{% else %}&#9660;{% endif %} {{ stock.change_pct }}%
               </span>
             </div>
             <div class="top25-card-meta">
-              <span class="top25-card-ticker">
-                <a href="{{ stock.yahoo_url }}" target="_blank" rel="noopener">{{ stock.ticker }}</a>
-              </span>
+              <span class="top25-card-ticker">{{ stock.ticker }}</span>
               <span>{{ stock.price | price }}</span>
               <span>{{ stock.market_cap | market_cap }}</span>
             </div>
