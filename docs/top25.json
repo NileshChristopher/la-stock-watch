@@ -1,5 +1,5 @@
 {
-  "build_date": "2026-02-13T21:57:26.977863+00:00",
+  "build_date": "2026-02-16T21:50:55.984144+00:00",
   "companies": [
     {
       "rank": 1,
@@ -8,11 +8,11 @@
       "city": "Thousand Oaks",
       "county": "Ventura",
       "price": 369.19000244140625,
-      "change_pct": 0.38,
+      "change_pct": 1.07,
       "year_high": 385.12,
       "year_low": 261.43,
       "market_cap": 198993412096,
-      "pe": 25.90807,
+      "pe": 25.980999,
       "yahoo_url": "https://finance.yahoo.com/quote/AMGN/"
     },
     {
@@ -40,7 +40,7 @@
       "year_high": 205.95,
       "year_low": 120.8,
       "market_cap": 150273949696,
-      "pe": 28.366934,
+      "pe": 28.30986,
       "yahoo_url": "https://finance.yahoo.com/quote/QCOM/"
     },
     {
@@ -121,7 +121,7 @@
       "county": "Los Angeles",
       "price": 71.45999908447266,
       "change_pct": 12.16,
-      "year_high": 71.6097,
+      "year_high": 71.61,
       "year_low": 47.73,
       "market_cap": 27500238848,
       "pe": 9.365662,
@@ -137,7 +137,7 @@
       "change_pct": 0.19,
       "year_high": 93.25,
       "year_low": 54.11,
-      "market_cap": 27458709504,
+      "market_cap": 27308937216,
       "pe": 33.50239,
       "yahoo_url": "https://finance.yahoo.com/quote/DXCM/"
     },
@@ -151,7 +151,7 @@
       "change_pct": 29.13,
       "year_high": 22.69,
       "year_low": 10.36,
-      "market_cap": 21735438336,
+      "market_cap": 22002749440,
       "pe": null,
       "yahoo_url": "https://finance.yahoo.com/quote/RIVN/"
     },
@@ -165,8 +165,8 @@
       "change_pct": -12.57,
       "year_high": 155.53,
       "year_low": 68.7,
-      "market_cap": 17953695744,
-      "pe": 21.433027,
+      "market_cap": 17860249600,
+      "pe": 21.393772,
       "yahoo_url": "https://finance.yahoo.com/quote/ILMN/"
     },
     {
@@ -179,7 +179,7 @@
       "change_pct": 4.47,
       "year_high": 134.0,
       "year_low": 23.9,
-      "market_cap": 15036952576,
+      "market_cap": 15169513472,
       "pe": 685.0769,
       "yahoo_url": "https://finance.yahoo.com/quote/KTOS/"
     },
@@ -208,7 +208,7 @@
       "year_high": 160.18,
       "year_low": 84.23,
       "market_cap": 12457113600,
-      "pe": 26.57816,
+      "pe": 26.52137,
       "yahoo_url": "https://finance.yahoo.com/quote/NBIX/"
     },
     {
@@ -217,8 +217,8 @@
       "ticker": "TTEK",
       "city": "Pasadena",
       "county": "Los Angeles",
-      "price": 36.69499969482422,
-      "change_pct": -9.7,
+      "price": 36.70000076293945,
+      "change_pct": -9.68,
       "year_high": 43.14,
       "year_low": 27.27,
       "market_cap": 9570333696,
@@ -261,7 +261,7 @@
       "county": "Los Angeles",
       "price": 4.829999923706055,
       "change_pct": -5.66,
-      "year_high": 11.2,
+      "year_high": 11.045,
       "year_low": 4.72,
       "market_cap": 8157637632,
       "pe": null,
