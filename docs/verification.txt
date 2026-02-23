@@ -1,6 +1,6 @@
-Build: 2026-02-20 21:47 UTC
+Build: 2026-02-23 22:06 UTC
 ----------------------------------------
 Tickers fetched: 25/25 OK
-Price range: $5.14 - $374.75 OK
-Market cap range: $3.9B - $202.0B OK
+Price range: $4.93 - $379.42 OK
+Market cap range: $3.7B - $204.5B OK
 No extreme movers (within +/-60%)
