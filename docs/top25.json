@@ -1,5 +1,5 @@
 {
-  "build_date": "2026-04-02T21:58:06.525659+00:00",
+  "build_date": "2026-04-03T21:54:58.814493+00:00",
   "companies": [
     {
       "rank": 1,
@@ -12,7 +12,7 @@
       "year_high": 391.29,
       "year_low": 261.43,
       "market_cap": 187563196416,
-      "pe": 24.433989,
+      "pe": 24.45116,
       "yahoo_url": "https://finance.yahoo.com/quote/AMGN/"
     },
     {
@@ -51,7 +51,7 @@
       "county": "San Diego",
       "price": 99.19999694824219,
       "change_pct": 4.07,
-      "year_high": 99.275,
+      "year_high": 99.28,
       "year_low": 61.9,
       "market_cap": 64810586112,
       "pe": 36.072727,
@@ -222,7 +222,7 @@
       "year_high": 179.0,
       "year_low": 125.94,
       "market_cap": 9592773632,
-      "pe": 46.629242,
+      "pe": 46.75131,
       "yahoo_url": "https://finance.yahoo.com/quote/MASI/"
     },
     {
@@ -275,7 +275,7 @@
       "county": "Los Angeles",
       "price": 43.22999954223633,
       "change_pct": -7.12,
-      "year_high": 91.47,
+      "year_high": 88.24,
       "year_low": 41.44,
       "market_cap": 7491774976,
       "pe": null,
